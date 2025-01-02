@@ -19,6 +19,7 @@ export async function createUser({ firstName, lastName, username, password }) {
 
 export async function getUser(params) {
     try {
+        console.log("getUser")
         const response = await axiosInstance.get("/user")
         return response.data
     } catch (error) {
