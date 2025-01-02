@@ -1,8 +1,18 @@
-# React + Vite
+# Job Application Tracker
+# Description
+* A web app where job seekers can track and maange the statuses of their job applications
+### Features
+* Bookmark jobs and update the statuses of applications (eg. applied, interviewing, negotiating, etc.)
+* Filter and search through applications
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Tech Stack
+### Front-end
+* React.js
+* Tailwind CSS
+* HTML
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Back-end (seperate repo)
+* Node.js
+* Express
+* Prisma ORM
+* PostgreSQL
