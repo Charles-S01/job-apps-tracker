@@ -17,12 +17,14 @@ export async function createJob({ title, location, company, link, dateApplied, s
     }
 }
 
-export async function getJobs({ jobId, status }) {
+export async function getJobs({ jobId, searchInput, status }) {
     try {
         console.log("getJobs")
         const params = {
             status,
+            searchInput,
         }
+        console.log("getJobs params:", params)
         const response = await axiosInstance.get(`/jobs/${jobId || ""}`, { params })
         return response.data
     } catch (error) {
