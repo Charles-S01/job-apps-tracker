@@ -39,9 +39,9 @@ function LoginComponent(params) {
 
     return (
         <>
-            <div className="flex h-full w-full items-center justify-center bg-zinc-800 text-white">
+            <div className="flex h-full w-full items-center justify-center bg-blue-100">
                 <div className="flex basis-96 flex-col gap-2">
-                    <div className="login-box flex w-full flex-col items-center gap-4 rounded-lg bg-zinc-900 p-4">
+                    <div className="login-box flex w-full flex-col items-center gap-4 rounded-lg bg-white p-4">
                         <p className="text-2xl">Log in</p>
 
                         {message && (
@@ -59,7 +59,7 @@ function LoginComponent(params) {
                                     placeholder="Enter username"
                                     name="username"
                                     id="username"
-                                    className="rounded-lg bg-zinc-800 p-1"
+                                    className="rounded-lg bg-gray-500 bg-opacity-10 p-1"
                                 />
                             </label>
                             <label className="flex flex-col gap-1">
@@ -70,11 +70,11 @@ function LoginComponent(params) {
                                     placeholder="Enter password"
                                     name="password"
                                     id="password"
-                                    className="rounded-lg bg-zinc-800 p-1"
+                                    className="rounded-lg bg-gray-500 bg-opacity-10 p-1"
                                 />
                             </label>
 
-                            <button className="self-stretch rounded-lg bg-white p-1 text-black">
+                            <button className="self-stretch rounded-lg bg-green-500 p-1 text-white">
                                 Log in
                             </button>
                         </form>
@@ -82,7 +82,9 @@ function LoginComponent(params) {
                         <div className="flex flex-col items-center gap-1">
                             <p>Don't have an account?</p>
                             <Link to={"/signup"}>
-                                <button className="rounded-lg bg-blue-500 p-2">Sign up</button>
+                                <button className="rounded-lg bg-blue-500 p-2 text-white">
+                                    Sign up
+                                </button>
                             </Link>
                         </div>
                     </div>

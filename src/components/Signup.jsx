@@ -38,9 +38,9 @@ function SignupComponent(params) {
 
     return (
         <>
-            <div className="flex h-full w-full items-center justify-center bg-zinc-800 text-white">
+            <div className="flex h-full w-full items-center justify-center bg-blue-100">
                 <div className="flex basis-96 flex-col gap-2">
-                    <div className="login-box flex w-full flex-col items-center gap-4 rounded-lg bg-zinc-900 p-4">
+                    <div className="login-box flex w-full flex-col items-center gap-4 rounded-lg bg-white p-4">
                         <p className="text-2xl">Sign up</p>
 
                         {errorMessage && (
@@ -58,7 +58,7 @@ function SignupComponent(params) {
                                     placeholder="Enter first name"
                                     name="firstName"
                                     id="firstName"
-                                    className="rounded-lg bg-zinc-800 p-1"
+                                    className="rounded-lg bg-gray-500 bg-opacity-10 p-1"
                                 />
                             </label>
                             <label className="flex flex-col gap-1">
@@ -69,7 +69,7 @@ function SignupComponent(params) {
                                     placeholder="Enter last name"
                                     name="lastName"
                                     id="lastName"
-                                    className="rounded-lg bg-zinc-800 p-1"
+                                    className="rounded-lg bg-gray-500 bg-opacity-10 p-1"
                                 />
                             </label>
 
@@ -81,7 +81,7 @@ function SignupComponent(params) {
                                     placeholder="Enter username"
                                     name="username"
                                     id="username"
-                                    className="rounded-lg bg-zinc-800 p-1"
+                                    className="rounded-lg bg-gray-500 bg-opacity-10 p-1"
                                 />
                             </label>
                             <label className="flex flex-col gap-1">
@@ -92,11 +92,11 @@ function SignupComponent(params) {
                                     placeholder="Enter password"
                                     name="password"
                                     id="password"
-                                    className="rounded-lg bg-zinc-800 p-1"
+                                    className="rounded-lg bg-gray-500 bg-opacity-10 p-1"
                                 />
                             </label>
 
-                            <button className="self-stretch rounded-lg bg-white p-1 text-black">
+                            <button className="self-stretch rounded-lg bg-blue-500 p-1 text-white">
                                 Sign up
                             </button>
                         </form>
@@ -104,7 +104,9 @@ function SignupComponent(params) {
                         <div className="flex flex-col items-center gap-1">
                             <p>Already have an account?</p>
                             <Link to={"/login"}>
-                                <button className="rounded-lg bg-green-600 p-2">Log in</button>
+                                <button className="rounded-lg bg-green-600 p-2 text-white">
+                                    Log in
+                                </button>
                             </Link>
                         </div>
                     </div>

@@ -15,3 +15,13 @@ export async function loginUser({ username, password }) {
         throw error
     }
 }
+
+export async function refreshToken() {
+    try {
+        console.log("refreshToken()")
+        const response = await axiosAuth.post("/refresh", {}, { withCredentials: true })
+        return response.data
+    } catch (error) {
+        throw error
+    }
+}

@@ -8,7 +8,7 @@ export default function BackButton(params) {
         <>
             <button
                 onClick={() => navigate(history.back())}
-                className="absolute left-0 top-0 flex items-center gap-2 rounded-lg p-2 opacity-70 lg:hover:bg-zinc-900 lg:hover:opacity-100"
+                className="absolute left-0 top-0 flex items-center gap-2 rounded-lg p-2 opacity-70 lg:hover:bg-gray-500 lg:hover:bg-opacity-10 lg:hover:opacity-100"
             >
                 <BackIcon />
                 <p>Back</p>

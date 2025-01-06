@@ -26,3 +26,16 @@ export async function getUser(params) {
         throw error
     }
 }
+
+export async function updateUser({ firstName, lastName }) {
+    try {
+        const body = {
+            firstName,
+            lastName,
+        }
+        const response = await axiosInstance.put("/user", body)
+        return response.data
+    } catch (error) {
+        throw error
+    }
+}

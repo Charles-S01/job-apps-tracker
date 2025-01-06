@@ -1,23 +1,15 @@
-import { useEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 import BackButton from "./BackButton"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { createJob, getJobs, updateJob } from "../api/jobs"
+import { createJob, deleteJob, getJobs, updateJob } from "../api/jobs"
 import { useNavigate, useParams } from "react-router-dom"
 import LoadingIcon from "./icons/LoadingIcon"
+import TrashIcon from "./icons/TrashIcon"
 
 export default function JobForm(params) {
     const queryClient = useQueryClient()
     const navigate = useNavigate()
     const { jobId } = useParams()
-
-    const [title, setTitle] = useState()
-    const [location, setLocation] = useState()
-    const [company, setCompany] = useState()
-    const [link, setLink] = useState()
-    const [dateApplied, setDateApplied] = useState()
-    const [status, setStatus] = useState("applied")
-
-    // const [isEditMode, setIsEditMode] = useState(false)
 
     const { data, isLoading } = useQuery({
         queryKey: ["job"],
@@ -28,7 +20,16 @@ export default function JobForm(params) {
         },
     })
 
-    useEffect(() => {
+    const [title, setTitle] = useState()
+    const [location, setLocation] = useState()
+    const [company, setCompany] = useState()
+    const [link, setLink] = useState()
+    const [dateApplied, setDateApplied] = useState()
+    const [status, setStatus] = useState("applied")
+
+    // const [isEditMode, setIsEditMode] = useState(false)
+
+    useLayoutEffect(() => {
         console.log("useEffect no data")
         if (data && !isLoading && jobId) {
             console.log("useEffect")
@@ -48,12 +49,20 @@ export default function JobForm(params) {
         mutationFn: () => createJob({ title, location, company, link, dateApplied, status }),
         onSuccess: () => {
             queryClient.invalidateQueries(["jobs"])
+            queryClient.invalidateQueries(["userData"])
             navigate(history.back())
         },
     })
 
     const { mutateAsync: updateJobMutation } = useMutation({
         mutationFn: () => updateJob({ jobId, title, location, company, link, dateApplied, status }),
+        onSuccess: () => {
+            navigate(history.back())
+        },
+    })
+
+    const { mutateAsync: deleteJobMutation } = useMutation({
+        mutationFn: () => deleteJob({ jobId }),
         onSuccess: () => {
             navigate(history.back())
         },
@@ -69,6 +78,10 @@ export default function JobForm(params) {
         }
     }
 
+    async function handleDelete(params) {
+        await deleteJobMutation()
+    }
+
     return (
         <>
             <div className="relative flex flex-1 items-center justify-center border-0 border-zinc-500">
@@ -80,7 +93,7 @@ export default function JobForm(params) {
                     </>
                 ) : (
                     <>
-                        <div className="form-box flex max-w-96 flex-1 flex-col gap-4 rounded-xl bg-zinc-900 p-4">
+                        <div className="form-box flex max-w-96 flex-1 flex-col gap-4 rounded-xl border-2 border-blue-900 bg-white p-4 shadow-lg">
                             <p className="self-center text-2xl">
                                 <strong>{jobId ? "Job details" : "Add job"}</strong>
                             </p>
@@ -94,7 +107,7 @@ export default function JobForm(params) {
                                         type="text"
                                         placeholder="title"
                                         name="title"
-                                        className="rounded-lg bg-zinc-800 p-2"
+                                        className="rounded-lg bg-gray-500 bg-opacity-10 p-2"
                                         onChange={(event) => setTitle(event.target.value)}
                                         required
                                     />
@@ -108,7 +121,7 @@ export default function JobForm(params) {
                                         type="text"
                                         placeholder="company"
                                         name="company"
-                                        className="rounded-lg bg-zinc-800 p-2"
+                                        className="rounded-lg bg-gray-500 bg-opacity-10 p-2"
                                         onChange={(event) => setCompany(event.target.value)}
                                     />
                                 </label>
@@ -120,7 +133,7 @@ export default function JobForm(params) {
                                         type="text"
                                         placeholder="location"
                                         name="location"
-                                        className="rounded-lg bg-zinc-800 p-2"
+                                        className="rounded-lg bg-gray-500 bg-opacity-10 p-2"
                                         onChange={(event) => setLocation(event.target.value)}
                                     />
                                 </label>
@@ -134,7 +147,7 @@ export default function JobForm(params) {
                                             name="date-applied"
                                             id="date-applied"
                                             // value="2018-07-22"
-                                            className="self-start rounded-lg bg-zinc-800 p-2"
+                                            className="self-start rounded-lg bg-gray-500 bg-opacity-10 p-2"
                                             onChange={(event) => setDateApplied(event.target.value)}
                                         />
                                     </label>
@@ -146,7 +159,7 @@ export default function JobForm(params) {
                                             name="status"
                                             id="status"
                                             // defaultValue="applied"
-                                            className="self-start rounded-lg bg-zinc-800 p-2"
+                                            className="self-start rounded-lg bg-gray-500 bg-opacity-10 p-2"
                                             onChange={(event) => setStatus(event.target.value)}
                                         >
                                             <option value="bookmarked">Bookmarked</option>
@@ -160,18 +173,38 @@ export default function JobForm(params) {
                                 </div>
                                 <label className="flex flex-col gap-1">
                                     <p>Link</p>
-
                                     <input
                                         value={link}
                                         type="text"
                                         placeholder="link"
                                         name="link"
-                                        className="rounded-lg bg-zinc-800 p-2"
+                                        className="rounded-lg bg-gray-500 bg-opacity-10 p-2"
                                         onChange={(event) => setLink(event.target.value)}
                                     />
+                                    {link && (
+                                        <>
+                                            <p className="self-start underline opacity-70 hover:text-blue-600 hover:opacity-100">
+                                                <a href={`${link}`}>Go to link</a>
+                                            </p>
+                                        </>
+                                    )}
                                 </label>
 
-                                <button className="rounded-lg bg-blue-500 p-2">Finish</button>
+                                <button className="rounded-lg bg-blue-500 p-2 text-white">
+                                    Finish
+                                </button>
+                                {jobId && (
+                                    <>
+                                        <button
+                                            onClick={() => handleDelete()}
+                                            type="button"
+                                            className="flex items-center justify-center gap-1 rounded-lg bg-red-500 p-2 text-white"
+                                        >
+                                            <p>Delete job</p>
+                                            <TrashIcon />
+                                        </button>
+                                    </>
+                                )}
                             </form>
                         </div>
                     </>

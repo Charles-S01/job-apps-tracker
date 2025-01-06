@@ -1,4 +1,5 @@
 import axios from "axios"
+import { refreshToken } from "../api/auth"
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -26,8 +27,13 @@ axiosInstance.interceptors.response.use(
         console.log("response:", response)
         return response
     },
-    (error) => {
+    async (error) => {
         console.log(error)
+        if (error.response.status === 401 && error.response.data.message === "Unauthorized") {
+            const data = await refreshToken()
+
+            localStorage.setItem("token", data.token)
+        }
         return Promise.reject(error)
     },
 )
