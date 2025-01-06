@@ -43,7 +43,7 @@ function AppComponent() {
                 <div className="flex h-full items-center justify-center">
                     <div className="flex flex-col items-center justify-center gap-2 text-2xl">
                         <p>Loading...</p>
-                        <LoadingIcon size={8} />
+                        <LoadingIcon />
                     </div>
                 </div>
             </>
@@ -58,7 +58,7 @@ function AppComponent() {
                 >
                     <div className="sidebar flex h-full w-56 flex-col gap-4 bg-blue-950 p-6 text-white">
                         <button onClick={() => setSideBar(!sidebar)} className="self-start">
-                            <HamburgerIcon size={8} />
+                            <HamburgerIcon size={"8"} />
                         </button>
 
                         <div className="navigation mb-auto flex flex-col items-center gap-2 text-2xl">
@@ -66,7 +66,7 @@ function AppComponent() {
                                 <button
                                     className={`flex ${location.pathname === "/" ? "bg-white text-black" : "hover:bg-white hover:bg-opacity-10"} w-full justify-center gap-2 rounded-lg p-2`}
                                 >
-                                    <HomeIcon size={8} />
+                                    <HomeIcon />
                                     <p>Home</p>
                                 </button>
                             </Link>
@@ -100,7 +100,7 @@ function AppComponent() {
                             onClick={() => setSideBar(!sidebar)}
                             className={`${sidebar ? "opacity-0" : "opacity-100"}`}
                         >
-                            <HamburgerIcon size={8} />
+                            <HamburgerIcon size={"8"} />
                         </button>
                         <Link to={`/`}>
                             <p className="text-3xl">
@@ -119,7 +119,7 @@ function AppComponent() {
                             <>
                                 <Link to={"/profile"}>
                                     <button>
-                                        <ProfileIcon size={8} />
+                                        <ProfileIcon size={"8"} />
                                     </button>
                                 </Link>
                             </>
