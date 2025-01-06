@@ -7,7 +7,7 @@ export default function LoadingIcon({ size }) {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className={`size-${size || "6"} animate-spin`}
+                className="size-8 animate-spin"
             >
                 <path
                     strokeLinecap="round"
