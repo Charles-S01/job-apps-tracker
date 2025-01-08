@@ -11,7 +11,7 @@
 * Tailwind CSS
 * HTML
 
-### Back-end ([seperate repo](https://github.com/Charles-S01/job-application-tracker-api))
+### Back-end ([separate repo](https://github.com/Charles-S01/job-application-tracker-api))
 * Node.js
 * Express
 * Prisma ORM
