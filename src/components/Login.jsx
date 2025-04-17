@@ -42,7 +42,7 @@ function LoginComponent(params) {
             <div className="flex h-full w-full items-center justify-center bg-blue-100">
                 <div className="flex basis-96 flex-col gap-2">
                     <div className="login-box flex w-full flex-col items-center gap-4 rounded-lg bg-white p-4">
-                        <p className="text-2xl">Log in</p>
+                        <p className="text-2xl font-bold">Log in</p>
 
                         {message && (
                             <>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AppContext } from "../App"
 import AddIcon from "./icons/AddIcon"
 import { Link } from "react-router-dom"
@@ -7,7 +7,6 @@ import { getJobs } from "../api/jobs"
 import LoadingIcon from "./icons/LoadingIcon"
 import JobItem from "./JobItem"
 import useUser from "../hooks/useUser"
-// import { useQuery, useQueryClient } from "@tanstack/react-query"
 
 export default function Home(params) {
     const queryClient = useQueryClient()
@@ -22,6 +21,10 @@ export default function Home(params) {
         queryKey: ["jobs", { searchInput, statusFilter, sortBy }],
         queryFn: () => getJobs({ jobId: null, searchInput, status: statusFilter, sortBy }),
     })
+
+    // useEffect(() => {
+    //     queryClient.invalidateQueries(["job"])
+    // }, [])
 
     return (
         <>

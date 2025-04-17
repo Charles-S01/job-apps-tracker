@@ -1,10 +1,19 @@
 import axiosInstance from "../axios/axiosInstance"
 
-export async function createJob({ title, location, company, link, dateApplied, status }) {
+export async function createJob({
+    title,
+    location,
+    company,
+    description,
+    link,
+    dateApplied,
+    status,
+}) {
     try {
         const body = {
             title,
             location,
+            description,
             company,
             link,
             dateApplied,
@@ -26,18 +35,38 @@ export async function getJobs({ jobId, searchInput, status, sortBy }) {
             sortBy,
         }
         console.log("getJobs params:", params)
-        const response = await axiosInstance.get(`/jobs/${jobId || ""}`, { params })
+        const response = await axiosInstance.get(`/jobs/job/${jobId || ""}`, { params })
         return response.data
     } catch (error) {
         throw error
     }
 }
 
-export async function updateJob({ jobId, title, location, company, link, dateApplied, status }) {
+export async function getJobPosting({ link }) {
+    try {
+        const params = { link }
+        const response = await axiosInstance.get(`/jobs/job-posting`, { params })
+        return response.data
+    } catch (error) {
+        throw error
+    }
+}
+
+export async function updateJob({
+    jobId,
+    title,
+    location,
+    description,
+    company,
+    link,
+    dateApplied,
+    status,
+}) {
     try {
         const body = {
             title,
             location,
+            description,
             company,
             link,
             dateApplied,

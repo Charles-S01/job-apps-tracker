@@ -1,8 +1,0 @@
-<div className="flex justify-evenly gap-2 rounded-lg bg-zinc-700 p-4">
-                                <p>Title</p>
-                                <p>Company</p>
-                                <p>Location</p>
-                                <p>Date applied</p>
-                                <p>Status</p>
-                                <p>Link</p>
-                            </div>
