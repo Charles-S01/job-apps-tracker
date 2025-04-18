@@ -1,4 +1,4 @@
-# 💼 Job Application Tracker
+# 💼 Job Tracker
 
 # Description
 A web application where job seekers can save job postings and manage their applications
