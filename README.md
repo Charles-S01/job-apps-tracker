@@ -1,19 +1,27 @@
-# Job Application Tracker
+# 💼 Job Application Tracker
 
-## Description
-* A web app where job seekers can track and maange the statuses of their job applications
-### Features
-* Bookmark jobs and update the statuses of applications (eg. applied, interviewing, negotiating, etc.)
-* Filter and search through applications
+# Description
+A web application where job seekers can save job postings and manage their applications
 
-## Tech Stack
-### Front-end
-* React.js
-* Tailwind CSS
-* HTML
+### Live website in "about" section
 
-### Back-end ([separate repo](https://github.com/Charles-S01/job-application-tracker-api))
-* Node.js
-* Express
-* Prisma ORM
-* PostgreSQL
+# 💻 Tech Stack
+### Frontend
+* JavaScript (React)
+* Tailwind CSS and HTML
+
+### Backend ([separate repo](https://github.com/Charles-S01/job-application-tracker-api))
+- JavaScript (Node.js, Express)
+- Prisma ORM
+- PostgreSQL
+
+# ⭐️ Features
+* Save, update, and delete job postings and update application statuses (eg. applied, interviewing, etc.)
+* Auto-populate fields of job details by pasting LinkedIn URL  
+* Filter saved jobs by keywords and application status
+* Persistent login with JWT authentication
+* Responsive interface for comfortable viewing on various screen sizes
+
+# 📸 Screenshots
+![Screenshot 2025-04-17 at 11 47 51 PM](https://github.com/user-attachments/assets/95f42ec2-7bc3-4486-869c-8cf7a594ff94)
+![Screenshot 2025-04-17 at 11 30 06 PM](https://github.com/user-attachments/assets/11c4d258-88e7-4035-ab41-b450cce53562)
